@@ -1,0 +1,3 @@
+Model year,Make,Model,Vehicle class,Engine size (L),Cylinders,Transmission,Fuel type,City (L/100 km),Highway (L/100 km),Combined (L/100 km),Combined (mpg),CO2 emissions (g/km),CO2 rating,Smog rating
+2020,FORD,ESCAPE,Sport utility vehicle: Small,1.5,3,AS8,Z,9.1,7.9,8.6,33,199,n/a,n/a
+2010,FORD,CROWN VICTORIA,Full-size,4.6,8,A6,Z,13.7,8.7,11.5,25,267,n/a,n/a

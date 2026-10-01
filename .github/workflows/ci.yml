@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    env:
+      MPLBACKEND: Agg
+      FLEET_RIGHTSIZING_ROOT: ${{ github.workspace }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: pip install -c requirements-release.txt ".[dev]"
+      - name: Lint
+        run: |
+          ruff check
+          mypy src
+          pyright src
+      - name: Test
+        run: pytest tests/ --cov=fleet_rightsizing --cov-report=term-missing
+      - name: Pinned regeneration and analytical comparison
+        run: |
+          publication_reference=$(mktemp -d)
+          cp -R results figures docs RESULTS.md README.md "$publication_reference/"
+          python scripts/run_pipeline.py
+          python scripts/publication_checks.py compare --reference "$publication_reference" --candidate .
+      - name: Docs
+        run: mkdocs build --strict
+      - name: Build wheel
+        run: pip wheel . -w dist/

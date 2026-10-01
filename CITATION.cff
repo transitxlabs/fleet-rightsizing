@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: fleet-rightsizing
+message: If you use this software, please cite it as below.
+authors:
+  - family-names: Daneshpajouh
+    given-names: Amirhossein
+repository-code: https://github.com/transitxlabs/fleet-rightsizing
+license: Apache-2.0
+version: 0.1.0

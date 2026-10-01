@@ -1,0 +1,5 @@
+Model year,Make,Model,Vehicle class,Engine size (L),Cylinders,Transmission,Fuel type,City (L/100 km),Highway (L/100 km),Combined (L/100 km),Combined (mpg),CO2 emissions (g/km),CO2 rating,Smog rating
+2015,Chevrolet,Silverado,Pickup truck: Standard,4.3,6,A6,X,13.4,9.9,11.9,24,274,n/a,n/a
+2015,Chevrolet,Silverado,Pickup truck: Standard,4.3,6,A6,E,19.3,14.3,17.1,17,274,n/a,n/a
+2015,Chevrolet,Silverado,Pickup truck: Standard,5.3,8,A6,X,14.6,10.3,12.7,22,292,n/a,n/a
+2015,Chevrolet,Silverado,Pickup truck: Standard,5.3,8,A6,E,19.9,13.8,17.2,16,275,n/a,n/a

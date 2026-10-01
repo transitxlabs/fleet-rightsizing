@@ -1,0 +1,5 @@
+Federal organization,Fiscal year,Fleet type,GHG scope,Energy category,Fuel type,Fuel consumption (L),Energy use (GJ),Emissions (kt)
+Example,FY2023-24,on-road vehicles,1,fossil,gasoline,1000,0,0.0023
+Example,FY2024-25,On-road vehicles,1,fossil,gasoline,1000,0,0.0023
+Example,FY2024-25,on-road vehicles,1,fossil,diesel,1000,0,0.0027
+Example,FY2024-25,aircraft,1,fossil,jet fuel,9000,0,0.0300

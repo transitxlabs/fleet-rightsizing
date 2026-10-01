@@ -1,0 +1,38 @@
+{
+  "federal_fleet_fuel": {
+    "sha256": "ab20d5905523fb18ffcdc29e4af747267b46040bf8eab82c89429f4877ef5fa8",
+    "bytes": 205795,
+    "raw_rows": 1666,
+    "observed_at_utc": "2026-10-01T12:25:43.465184+00:00"
+  },
+  "nyc_efficiency": {
+    "sha256": "1262a9b3d646ffd7ef88e69b7afeb069bd2784caf0339390215a0853015df1ef",
+    "bytes": 13489,
+    "raw_rows": 106,
+    "observed_at_utc": "2026-10-01T12:25:43.465814+00:00"
+  },
+  "nrcan_ratings": {
+    "sha256": "adb157dccde5d954d34b8a068f9dd604ad28b0050d2bb3ba17d26678761d2cb7",
+    "bytes": 827253,
+    "raw_rows": 10060,
+    "observed_at_utc": "2026-10-01T12:25:43.482119+00:00"
+  },
+  "laval_fleet": {
+    "sha256": "b22b7cc0cb188d3a778416e365ac9969ddbbef9bfdcd01e5a93725d95af17d6c",
+    "bytes": 167160,
+    "raw_rows": 1318,
+    "observed_at_utc": "2026-10-01T12:25:43.484675+00:00"
+  },
+  "nrcan_bev": {
+    "sha256": "d37f52ee8049e93b37f66ac233b037e6abe0218ef3635ef6cbddf8fb8c675f51",
+    "bytes": 138739,
+    "raw_rows": 1250,
+    "observed_at_utc": "2026-10-01T12:25:43.487644+00:00"
+  },
+  "seattle_fleet": {
+    "sha256": "aa210650a96b36c2ca2cb905742a640244ce4078e37d4194c34ddc4c26dc5b53",
+    "bytes": 493225,
+    "raw_rows": 4255,
+    "observed_at_utc": "2026-10-01T12:25:43.495298+00:00"
+  }
+}

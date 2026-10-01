@@ -1,0 +1,2 @@
+Model year,Make,Model,Vehicle class,Motor (kW),Transmission,Fuel type,City (kWh/100 km),Highway (kWh/100 km),Combined (kWh/100 km),City (Le/100 km),Highway (Le/100 km),Combined (Le/100 km),Range (km),CO2 emissions (g/km),CO2 rating ,Smog rating,Recharge time (h)
+2024,FORD,MUSTANG MACH-E,Sport utility vehicle: Small,210,A1,B,22.0,24.0,23.0,2.5,2.7,2.6,400,0,n/a,n/a,8

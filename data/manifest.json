@@ -1,0 +1,67 @@
+{
+  "datasets": [
+    {
+      "id": "seattle_fleet",
+      "name": "Seattle Active Fleet Complement",
+      "url": "https://data.seattle.gov/d/enxu-fgzb",
+      "licence": "Public domain (City of Seattle open data portal metadata)",
+      "licence_url": "https://data.seattle.gov/api/views/enxu-fgzb.json",
+      "redistribution": "Permitted on stated public-domain basis; retain publisher attribution",
+      "role": "Primary vehicle inventory",
+      "cached_in_repo": false
+    },
+    {
+      "id": "nyc_efficiency",
+      "name": "NYC Real-World Fuel Efficiency",
+      "url": "https://data.cityofnewyork.us/d/mn2p-34if",
+      "licence": "NYC Open Data terms (unrestricted use subject to portal terms)",
+      "licence_url": "https://www.nyc.gov/opendata/get-started/FAQs",
+      "redistribution": "Reuse permitted under NYC Open Data policy; not independently verified as public domain",
+      "role": "Measured telematics calibration (2019 non-policing light-duty, excludes BEV/PHEV)",
+      "cached_in_repo": false
+    },
+    {
+      "id": "laval_fleet",
+      "name": "City of Laval vehicles and equipment",
+      "url": "https://www.donneesquebec.ca/recherche/dataset/d866cf2f-9a68-49ba-9825-41c9872d55cb",
+      "licence": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "redistribution": "Permitted with attribution, licence link and change notice",
+      "role": "Ingestion and count check only; no replicated validation",
+      "cached_in_repo": false
+    },
+    {
+      "id": "nrcan_ratings",
+      "name": "NRCan 2015-2024 fuel consumption ratings",
+      "url": "https://open.canada.ca/data/en/dataset/98f1a129-f628-4ce4-b24d-6f16bf24dd64",
+      "licence": "Open Government Licence - Canada",
+      "licence_url": "https://open.canada.ca/en/open-government-licence-canada",
+      "redistribution": "Permitted subject to source acknowledgement and licence conditions",
+      "role": "Tailpipe CO2 and fuel factors for matched ICE assets",
+      "cached_in_repo": false
+    },
+    {
+      "id": "nrcan_bev",
+      "name": "NRCan 2012-2026 battery electric vehicles",
+      "url": "https://open.canada.ca/data/en/dataset/98f1a129-f628-4ce4-b24d-6f16bf24dd64",
+      "licence": "Open Government Licence - Canada",
+      "licence_url": "https://open.canada.ca/en/open-government-licence-canada",
+      "redistribution": "Permitted subject to source acknowledgement and licence conditions",
+      "role": "ZEV replacement catalogue",
+      "cached_in_repo": false
+    },
+    {
+      "id": "federal_fleet_fuel",
+      "name": "Canada federal fleet fuel use",
+      "url": "https://open.canada.ca/data/en/dataset/6bed41cd-9816-4912-a2b8-b0b224909396",
+      "licence": "Open Government Licence - Canada",
+      "licence_url": "https://open.canada.ca/en/open-government-licence-canada",
+      "redistribution": "Permitted subject to source acknowledgement and licence conditions",
+      "role": "Canadian scope-1 on-road per-fuel CO2e/L accounting; not Seattle validation",
+      "cached_in_repo": false
+    }
+  ],
+  "code_licence": "Apache-2.0",
+  "documentation_licence": "CC BY 4.0 by Amirhossein Daneshpajouh; written prose including root reports; excludes source-derived data and figures",
+  "derived_data_licence": "Source terms preserved; see ATTRIBUTION.md"
+}

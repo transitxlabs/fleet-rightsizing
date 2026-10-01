@@ -1,0 +1,782 @@
+{
+  "analysis_year": 2026,
+  "catalogue_coverage": {
+    "matched_records": 361,
+    "eligible_records": 1568,
+    "estimated_records": 1544,
+    "eligible_without_supported_factors": 24,
+    "definition": "Catalogue gate denominator is scope/fuel-eligible records before factor support; estimated cohort excludes eligible records lacking supported factors"
+  },
+  "ingestion": {
+    "seattle_fleet": {
+      "raw_rows": 4255,
+      "loaded_rows": 4253,
+      "rejected_rows": 2,
+      "rejection_reasons": {
+        "publisher_footer": 2
+      },
+      "rejected_records": [
+        {
+          "source_row": 4254,
+          "reason": "publisher_footer",
+          "field": "footer",
+          "value": "Total"
+        },
+        {
+          "source_row": 4255,
+          "reason": "publisher_footer",
+          "field": "footer",
+          "value": "Applied filters:\nEQUIP_ID is not (Blank)"
+        }
+      ]
+    },
+    "laval_fleet": {
+      "raw_rows": 1318,
+      "loaded_rows": 1232,
+      "rejected_rows": 86,
+      "rejection_reasons": {
+        "blank_year": 86
+      },
+      "rejected_records": [
+        {
+          "source_row": 9,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 12,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 13,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 30,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 35,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 36,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 37,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 38,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 39,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 40,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 41,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 71,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 73,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 81,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 82,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 102,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 109,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 110,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 138,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 140,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 141,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 144,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 166,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 167,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 208,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 209,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 214,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 215,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 239,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 296,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 297,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 300,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 301,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 355,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 356,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 357,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 358,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 363,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 429,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 430,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 431,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 436,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 437,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 438,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 482,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 483,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 489,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 490,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 491,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 492,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 545,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 548,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 549,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 550,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 551,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 615,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 696,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 697,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 700,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 701,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 702,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 722,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 723,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 796,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 865,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 867,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 871,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 872,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 939,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 998,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 999,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1000,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1032,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1056,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1111,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1112,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1113,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1115,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1129,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1172,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1229,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1230,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1231,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1233,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1246,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        },
+        {
+          "source_row": 1287,
+          "reason": "blank_year",
+          "field": "year",
+          "value": ""
+        }
+      ]
+    },
+    "nyc_efficiency": {
+      "raw_rows": 106,
+      "loaded_rows": 106,
+      "rejected_rows": 0,
+      "rejection_reasons": {},
+      "rejected_records": []
+    },
+    "nrcan_ratings": {
+      "raw_rows": 10060,
+      "loaded_rows": 10060,
+      "rejected_rows": 0,
+      "rejection_reasons": {},
+      "rejected_records": []
+    },
+    "nrcan_bev": {
+      "raw_rows": 1250,
+      "loaded_rows": 1250,
+      "rejected_rows": 0,
+      "rejection_reasons": {},
+      "rejected_records": []
+    },
+    "federal_fleet_fuel": {
+      "raw_rows": 1666,
+      "loaded_rows": 1666,
+      "rejected_rows": 0,
+      "rejection_reasons": {},
+      "rejected_records": []
+    }
+  },
+  "baseline": {
+    "vehicle_count": 4253,
+    "supported_vehicle_count": 1544,
+    "annual_fuel_litres": 1267586.9420130956,
+    "annual_co2_tonnes": 3012.711215530673,
+    "annual_fuel_cost_cad": 2104892.128811705,
+    "nrcan_eligible_match_rate": 0.2302295918367347,
+    "excluded_bev_count": 602,
+    "excluded_non_powered_count": 26,
+    "excluded_trailer_count": 511,
+    "excluded_unsupported_count": 1570
+  },
+  "inputs": {
+    "seattle_fleet": {
+      "sha256": "aa210650a96b36c2ca2cb905742a640244ce4078e37d4194c34ddc4c26dc5b53",
+      "bytes": 493225,
+      "raw_rows": 4255,
+      "observed_at_utc": "2026-10-01T14:45:31.943768+00:00"
+    },
+    "nyc_efficiency": {
+      "sha256": "1262a9b3d646ffd7ef88e69b7afeb069bd2784caf0339390215a0853015df1ef",
+      "bytes": 13489,
+      "raw_rows": 106,
+      "observed_at_utc": "2026-10-01T14:45:31.943768+00:00"
+    },
+    "laval_fleet": {
+      "sha256": "b22b7cc0cb188d3a778416e365ac9969ddbbef9bfdcd01e5a93725d95af17d6c",
+      "bytes": 167160,
+      "raw_rows": 1318,
+      "observed_at_utc": "2026-10-01T14:45:31.943768+00:00"
+    },
+    "nrcan_ratings": {
+      "sha256": "adb157dccde5d954d34b8a068f9dd604ad28b0050d2bb3ba17d26678761d2cb7",
+      "bytes": 827253,
+      "raw_rows": 10060,
+      "observed_at_utc": "2026-10-01T14:45:31.943768+00:00"
+    },
+    "nrcan_bev": {
+      "sha256": "d37f52ee8049e93b37f66ac233b037e6abe0218ef3635ef6cbddf8fb8c675f51",
+      "bytes": 138739,
+      "raw_rows": 1250,
+      "observed_at_utc": "2026-10-01T14:45:31.943768+00:00"
+    },
+    "federal_fleet_fuel": {
+      "sha256": "ab20d5905523fb18ffcdc29e4af747267b46040bf8eab82c89429f4877ef5fa8",
+      "bytes": 205795,
+      "raw_rows": 1666,
+      "observed_at_utc": "2026-10-01T14:45:31.943768+00:00"
+    }
+  },
+  "recommendations_status": "withheld",
+  "scenario_value_status": "withheld placeholders; not evaluated fleet outcomes",
+  "diagnostic_cohort": {
+    "definition": "estimate_supported records; known weights and identified duty tokens screened; specialization remains unresolved",
+    "records": 1544,
+    "excluded_records": 2709,
+    "standard_type_counts": {
+      "SUV": 626,
+      "TRUCK": 458,
+      "VAN": 232,
+      "SEDAN": 228
+    },
+    "quartile_scope": "within standard_type on this estimated cohort only",
+    "chart_population": "same estimated cohort, including light-duty TRUCK"
+  },
+  "laval_role": "ingestion only; no replicated analysis or validation",
+  "provenance_totals": {
+    "class_mean": {
+      "records": 1183,
+      "co2_kg": 2408987.3637539903
+    },
+    "exact": {
+      "records": 108,
+      "co2_kg": 173002.96776752136
+    },
+    "fuzzy": {
+      "records": 215,
+      "co2_kg": 371387.61499075464
+    },
+    "generic": {
+      "records": 15,
+      "co2_kg": 0.0
+    },
+    "not_applicable": {
+      "records": 2694,
+      "co2_kg": 0.0
+    },
+    "year_adjacent": {
+      "records": 38,
+      "co2_kg": 59333.26901840705
+    }
+  },
+  "hypothetical_cost_case": {
+    "hypothetical_npv_delta_cad": -1657.2659624154257,
+    "ice_npv_cad": 106091.38905900985,
+    "bev_npv_cad": 107748.65502142526,
+    "hypothetical_tailpipe_reduction_pct": 100.0
+  },
+  "uncertainty": {
+    "kind": "conditional_row_bootstrap",
+    "estimand": "sum of n iid draws from the empirical distribution of fixed simulated light-duty record emissions; not this finite fleet's real emissions",
+    "assumption_range_tonnes": [
+      1470.0130741509074,
+      5539.38184530181
+    ],
+    "range_scope": "Chosen mileage multipliers 0.7/1.3 times observed catalogue variant or class extrema; no coverage guarantee or NYC sampling uncertainty"
+  },
+  "evaluation": {
+    "threshold_overlap_nyc": 0.7641509433962265,
+    "spearman_ghg_rank_nyc": -0.20832126450976454,
+    "spearman_ci_low": -0.40221540964550007,
+    "spearman_ci_high": -0.021836108858157358,
+    "scenario_ghg_reduction_pct": 0.0,
+    "scenario_tco_savings_cad": 0.0,
+    "scenario_eligible_count": 0,
+    "scenario_infeasible_count": 154,
+    "ghg_bootstrap_low": 2951.4900948207364,
+    "ghg_bootstrap_high": 3071.7646222269855,
+    "baseline_b1_count": 304,
+    "baseline_b2_count": 181,
+    "package_illustrative_flag_count": 387,
+    "diagnostic_cohort_count": 1544,
+    "stop_rules": {
+      "memory_ok": true,
+      "match_rate_ok": false,
+      "bootstrap_width_ok": true,
+      "messages": [
+        "Stop rule: eligible NRCan match rate 23.02% below 50%"
+      ]
+    }
+  },
+  "match_provenance": {
+    "not_applicable": 2694,
+    "class_mean": 1183,
+    "fuzzy": 215,
+    "exact": 108,
+    "year_adjacent": 38,
+    "generic": 15
+  },
+  "federal_factor_check": {
+    "status": "ok",
+    "latest_year": 2024,
+    "latest_year_rows": 129,
+    "compatible_rows": 42,
+    "excluded_rows": 87,
+    "fuels": {
+      "diesel": {
+        "litres": 6543997.0,
+        "emissions_kt": 17.924999999999997,
+        "rows": 18.0,
+        "kg_co2e_per_l": 2.739151622471709,
+        "illustrative_co2_kg_per_l": 2.7,
+        "difference_kg_per_l": 0.03915162247170878
+      },
+      "gasoline": {
+        "litres": 12869366.0,
+        "emissions_kt": 29.714799999999997,
+        "rows": 24.0,
+        "kg_co2e_per_l": 2.308956012285298,
+        "illustrative_co2_kg_per_l": 2.3,
+        "difference_kg_per_l": 0.008956012285298076
+      }
+    },
+    "scope": "Scope 1 on-road gasoline/diesel only; source CO2e versus illustrative CO2 factors (2.3/2.7 kg/L); rounding, blends and non-CO2 gases prevent validation"
+  },
+  "timings_seconds": {
+    "download_s": 0.01713779199781129,
+    "load_s": 0.11644916699879104,
+    "baseline_s": 2.0367697910041898,
+    "evaluate_s": 0.16658908400131622,
+    "figures_s": 0.28515087500272784,
+    "total_instrumented_s": 2.622096709004836,
+    "before_output_s": 2.6222682500010706,
+    "through_output_s": 2.7923322499991627
+  },
+  "stage_memory_mb": {
+    "download_mb": 125.578125,
+    "load_mb": 138.765625,
+    "baseline_mb": 141.84375,
+    "evaluate_mb": 143.5625,
+    "figures_mb": 162.1875
+  },
+  "memory_scope": "process high-water RSS observed after each stage; not isolated usage",
+  "peak_memory_mb": 166.75,
+  "environment": {
+    "python_version": "3.11.15",
+    "platform": "macOS-27.0.1-arm64-arm-64bit"
+  },
+  "laval_vehicle_count": 1232,
+  "laval_supported_count": 4,
+  "nyc_group_count": 106,
+  "plan_top_ids": [],
+  "reallocation_groups": [],
+  "stop_rules_passed": false
+}

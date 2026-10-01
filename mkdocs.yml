@@ -1,0 +1,23 @@
+site_name: Fleet Rightsizing
+site_url: https://transitxlabs.github.io/fleet-rightsizing/
+nav:
+  - Home: index.md
+  - Stewardship: stewardship.md
+  - Local validation: validation.md
+  - Scope comparisons: scope-comparisons.md
+  - Technical report: technical-report.md
+  - Results: results.md
+  - Attribution: attribution.md
+  - Analysis amendment: AMENDMENT_2026-10-01.md
+  - Output dictionary: OUTPUT_DICTIONARY.md
+  - Archived specification: analysis-archive.md
+docs_dir: docs
+exclude_docs: |
+  PREREGISTRATION.md
+  milestones/**
+site_dir: site
+theme:
+  name: mkdocs
+markdown_extensions:
+  - toc:
+      permalink: true

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fleet rightsizing summary</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; line-height: 1.5; color: #1a1a1a; }
+    body { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+    main { display: block; }
+    h1 { font-size: 1.75rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+    figure { margin: 1.5rem 0; }
+    figcaption { font-size: 0.95rem; color: #444; margin-top: 0.5rem; }
+    img { max-width: 100%; height: auto; border: 1px solid #ddd; }
+    a:focus-visible { outline: 3px solid #005fcc; outline-offset: 2px; }
+    .note { background: #f9f9f9; padding: 1rem; border-left: 4px solid #666; }
+    .warning { background: #fff8e6; padding: 1rem; border-left: 4px solid #b8860b; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Public-data integration case study</h1>
+    <p>TransitX Labs work sample on public open data. Not client work.</p>
+  </header>
+  <main>
+    <p>Which public inventory records support transparent fleet accounting, and which need measured utilization and mission evidence?</p>
+    <p>Demonstrated capability: typed public-data ingestion, source reconciliation, factor provenance and reproducible CSV/JSON/HTML accounting.</p>
+    <p>Analysis year: {{ payload.get('analysis_year', 'unavailable') }}. Fixed age reference year; source vintages differ.</p>
+    <pre aria-label="Source-to-output diagram">Seattle inventory + NYC group mileage + NRCan test-cycle ratings
+  -> pinned ingestion -> scope/fuel screen -> simulated km + factor provenance
+  -> estimated cohort -> CSV/JSON ledgers -> tables and figures
+Laval inventory -> ingestion reconciliation only
+Federal fuel data -> fiscal-year/scope filter -> CO2e/L accounting</pre>
+    <section aria-labelledby="baseline-heading">
+      <h2 id="baseline-heading">Simulated light-duty estimate (catalogue and class proxies)</h2>
+      <table>
+        <caption>Fleet baseline metrics for {{ fleet_name }}</caption>
+        <thead><tr><th scope="col">Metric</th><th scope="col">Value</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Vehicles</th><td>{{ summary.vehicle_count }} total, {{ summary.supported_vehicle_count }} estimated</td></tr>
+          <tr><th scope="row">Annual fuel (L)</th><td>{{ fuel_litres }}</td></tr>
+          <tr><th scope="row">Annual tailpipe CO2 (t)</th><td>{{ co2_tonnes }}</td></tr>
+          <tr><th scope="row">Annual fuel cost (CAD)</th><td>{{ fuel_cost }}</td></tr>
+          <tr><th scope="row">NRCan eligible match rate</th><td>{{ payload.get('catalogue_coverage', {}).get('matched_records', 0) }}/{{ payload.get('catalogue_coverage', {}).get('eligible_records', 0) }} ({{ match_rate }})</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section aria-labelledby="eval-heading">
+      <h2 id="eval-heading">Evaluation diagnostics</h2>
+      <table>
+        <caption>Descriptive metrics (not independent validation)</caption>
+        <thead><tr><th scope="col">Metric</th><th scope="col">Value</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">NYC threshold overlap</th><td>{{ overlap }}</td></tr>
+          <tr><th scope="row">NYC composite versus g/km rank diagnostic</th><td>{{ spearman }}</td></tr>
+          <tr><th scope="row">Conditional row-bootstrap diagnostic (t)</th><td>{{ ghg_ci }}</td></tr>
+          <tr><th scope="row">Operational recommendations and fleet savings</th><td>Withheld</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section aria-labelledby="stop-heading">
+      <h2 id="stop-heading">Stop rules</h2>
+      <div class="warning">
+        <p>{{ stop_text }}</p>
+      </div>
+    </section>
+    <section aria-labelledby="limits-heading">
+      <h2 id="limits-heading">Limitations</h2>
+      <p>NRCan factors are standard test-cycle ratings, not municipal duty-cycle measurements. No measured duty-cycle adjustment is available. Inventory and catalogue vintages differ (ICE ratings 2015-2024); neither establishes current inventory or purchase availability.</p>
+      <p>{{ payload.get('catalogue_coverage', {}).get('eligible_without_supported_factors', 0) }} scope/fuel-eligible records lack supported factors, explaining the difference between the catalogue denominator and estimated cohort.</p>
+      <div class="note">
+        <p>Seattle and Laval inventories lack measured telematics. Utilization uses simulated proxy mileage calibrated from NYC publisher-reported summaries.</p>
+        <p>Known weights and identified duty tokens screened; specialization remains unresolved. SERVICE BODY and CUTAWAY can pass; both ledgers display unresolved scope/upfit status. Unknown or incompatible factors are excluded; exclusion does not imply zero emissions. Catalogue options are illustrative and awaiting engineering review of payload, body, seating, mission, upfits and current availability.</p>
+      </div>
+    </section>
+    <section aria-labelledby="provenance-heading">
+      <h2 id="provenance-heading">Emissions factor provenance</h2>
+      <p>NYC calibration is the unweighted median of aggregate model-group miles per vehicle, not a vehicle-weighted duty distribution. Class mappings: SEDAN to Compact; SUV to Sport utility vehicle: Small; VAN to Minivan; TRUCK to Pickup truck: Standard.</p>
+      <p>Catalogue variant means do not resolve engine/transmission specifications; class proxies are arithmetic means. Generic factors contribute no estimate.</p>
+      <table><caption>Separate provenance contributions; simulated kilometres</caption>
+        <tr><th>Provenance</th><th>Records</th><th>CO2 kg</th></tr>
+        {% for name, item in payload.get('provenance_totals', {}).items() %}
+        <tr><td>{{ name }}</td><td>{{ item.records }}</td><td>{{ '%.1f'|format(item.co2_kg) }}</td></tr>
+        {% endfor %}
+      </table>
+      <p>Disjoint exclusions: {{ summary.excluded_bev_count }} BEV, {{ summary.excluded_non_powered_count }} non-powered, {{ summary.excluded_trailer_count }} trailer, {{ summary.excluded_unsupported_count }} other unsupported. Total: {{ summary.vehicle_count - summary.supported_vehicle_count }}.</p>
+    </section>
+    <section aria-labelledby="uncertainty-heading">
+      <h2 id="uncertainty-heading">Assumptions and interpretation</h2>
+      <p>The conditional row-bootstrap describes n iid draws from fixed simulated record emissions, with no coverage claim for real finite-fleet emissions. Mileage, calibration and classification errors are omitted.</p>
+      <p>Transparent assumption range (tonnes): {{ assumption_range }}. Chosen mileage multipliers 0.7/1.3 times observed factor extrema; no coverage guarantee.</p>
+      <p>All flags and the utilization chart use the same estimated cohort: {{ evaluation_count }} records, including light-duty trucks. Quartiles are recalculated within that cohort. Age flags: {{ age_flags }}; kilometre-only flags: {{ km_flags }}; quartile flags: {{ quartile_flags }}. Legacy zero fleet scenario values are withheld placeholders; not evaluated fleet outcomes.</p>
+      <p>Quartile flags do not establish surplus. Measured mileage, dispatch, engine hours, usage frequency, reserve and emergency-response requirements must precede any operational recommendation. Laval is an ingestion case only.</p>
+      <p>A fictional cost example uses two base vehicles at 12,000 km/year, 960 L gasoline or 1,080 L diesel; BEVs use 20 kWh/100 km. Per-unit CAD capital: 35,000 ICE; 45,000 BEV plus 3,500 charger; no upfits, taxes or residual value. All mileage transfers, so BEV vehicle tailpipe CO2 is zero (100% reduction); lifecycle emissions are excluded.</p>
+      <p>Two-vehicle cash flows and six-parameter sensitivity are arithmetic illustrations, not municipal fleet savings: </p>
+      <table><caption>Fictional cash flows (CAD)</caption><tr><th>Quantity</th><th>CAD</th></tr>
+        {% for label, value in cost_rows %}<tr><td>{{ label }}</td><td>{{ value }}</td></tr>{% endfor %}
+      </table>
+    </section>
+    <section aria-labelledby="canada-heading">
+      <h2 id="canada-heading">Canadian aggregate accounting example</h2>
+      <p>Federal dataset status: {{ payload.get('federal_factor_check', {}).get('status', 'empty') }}. Empty means unavailable, not passed.</p>
+      <p>Fiscal year beginning {{ payload.get('federal_factor_check', {}).get('latest_year', 0) }}: {{ payload.get('federal_factor_check', {}).get('compatible_rows', 0) }} compatible rows of {{ payload.get('federal_factor_check', {}).get('latest_year_rows', 0) }} latest-year rows. Scope 1 on-road gasoline/diesel only.</p>
+      <table><caption>Federal CO2e per litre; comparisons are scoped arithmetic, not municipal factor validation</caption>
+        <tr><th>Fuel</th><th>Litres</th><th>kg CO2e/L</th><th>Illustrative CO2 reference kg/L</th></tr>
+        {% for fuel, item in payload.get('federal_factor_check', {}).get('fuels', {}).items() %}
+        <tr><td>{{ fuel }}</td><td>{{ '{:,.0f}'.format(item.litres) }}</td><td>{{ '%.3f'|format(item.kg_co2e_per_l) }}</td><td>{{ '%.1f'|format(item.illustrative_co2_kg_per_l) }}</td></tr>
+        {% endfor %}
+      </table>
+      <p>Rounding, blends and non-CO2 gases prevent interpreting agreement as validation.</p>
+    </section>
+    <section aria-labelledby="ingestion-heading">
+      <h2 id="ingestion-heading">Ingestion reconciliation</h2>
+      <p>Loaded means parser-accepted, before analysis exclusions. Seattle publisher_footer rows are Total and Applied filters metadata, not missing vehicles. Laval blank_year records are rejected inventory rows. The rejected-record ledger is ingestion_rejections.csv; source_row is a 1-based data-record ordinal after the header.</p>
+      <table><caption>Raw = loaded + rejected for each source</caption><tr><th>Source</th><th>Raw</th><th>Loaded</th><th>Rejected</th><th>Reasons</th></tr>
+        {% for name, item in payload.get('ingestion', {}).items() %}
+        <tr><td>{{ name }}</td><td>{{ item.raw_rows }}</td><td>{{ item.loaded_rows }}</td><td>{{ item.rejected_rows }}</td><td>{% for reason, count in item.rejection_reasons.items() %}{{ reason }}: {{ count }}; {% endfor %}</td></tr>
+        {% endfor %}
+      </table>
+    </section>
+    <section aria-labelledby="inputs-heading">
+      <h2 id="inputs-heading">Input observation receipt</h2>
+      <p>Observed timestamps identify this run; inherited cache retrieval dates are unknown.</p>
+      <table><caption>Publication inputs; SHA-256 and exact counts</caption><tr><th>Dataset</th><th>Rows</th><th>Bytes</th><th>SHA-256</th><th>Observed UTC</th></tr>
+        {% for name, item in payload.get('inputs', {}).items() %}
+        <tr><td>{{ name }}</td><td>{{ item.raw_rows }}</td><td>{{ item.bytes }}</td><td style="overflow-wrap:anywhere">{{ item.sha256 }}</td><td>{{ item.observed_at_utc }}</td></tr>
+        {% endfor %}
+      </table>
+    </section>
+    <section aria-labelledby="attribution-heading">
+      <h2 id="attribution-heading">Provider credit and licences</h2>
+      <p>Source-derived data and figures retain source conditions; code is Apache-2.0. Prose: Amirhossein Daneshpajouh, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Processing: filtering, normalization, simulated mileage, aggregation and illustrative cash-flow calculations.</p>
+      <ul>
+        <li><a href="https://data.seattle.gov/d/enxu-fgzb">City of Seattle Open Data</a>: <a href="https://data.seattle.gov/api/views/enxu-fgzb.json">public-domain portal metadata</a>.</li>
+        <li><a href="https://data.cityofnewyork.us/d/mn2p-34if">NYC Open Data / DCAS</a>: <a href="https://data.cityofnewyork.us/stories/s/Terms-of-Use/k9k7-3cje">portal terms</a>.</li>
+        <li><a href="https://www.donneesquebec.ca/recherche/dataset/d866cf2f-9a68-49ba-9825-41c9872d55cb">Ville de Laval</a>: modified inventory, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</li>
+        <li><a href="https://open.canada.ca/data/en/dataset/98f1a129-f628-4ce4-b24d-6f16bf24dd64">Natural Resources Canada</a> and <a href="https://open.canada.ca/data/en/dataset/6bed41cd-9816-4912-a2b8-b0b224909396">Government of Canada federal fleet</a>: contains information licensed under the <a href="https://open.canada.ca/en/open-government-licence-canada">Open Government Licence - Canada</a>.</li>
+      </ul>
+    </section>
+    <section aria-labelledby="stewardship-heading">
+      <h2 id="stewardship-heading">Stewardship and next validation</h2>
+      <p>Maintainer: TransitX Labs Inc.; contact <a href="mailto:info@transitxlabs.ca">info@transitxlabs.ca</a>. Code: Apache-2.0; prose: CC BY 4.0; provider conditions apply to data. Support scope: questions and reproducibility reports for this work sample, with no response-time or operational service commitment.</p>
+      <p>Measured Canadian validation is planned future work. Toronto is a data lead only; a prespecified decision target, lawfully reusable measured service evidence and held-out outcomes are still required.</p>
+    </section>
+    <section aria-labelledby="fig-heading">
+      <h2 id="fig-heading">Figures</h2>
+      {% for fig in figures %}
+      <figure>
+        <img src="{{ fig.path }}" alt="{{ fig.name }}">
+        <figcaption>{{ fig.name }}</figcaption>
+      </figure>
+      {% endfor %}
+    </section>
+  </main>
+</body>
+</html>
