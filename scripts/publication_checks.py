@@ -7,7 +7,6 @@ import argparse
 import hashlib
 import io
 import json
-import math
 import re
 import subprocess
 import tarfile
@@ -15,6 +14,9 @@ from pathlib import Path
 from typing import Any
 
 import pandas as pd
+from PIL import Image
+
+from fleet_rightsizing.figures import FIGURE_DIMENSIONS, figure_sources, source_bytes
 
 OBSERVATIONS = {"timings_seconds", "stage_memory_mb", "peak_memory_mb", "environment"}
 EXCLUDED = {
@@ -49,15 +51,19 @@ def compare_values(reference: Any, candidate: Any, path: str = "root") -> None:
         for i, (left, right) in enumerate(zip(reference, candidate, strict=True)):
             compare_values(left, right, f"{path}[{i}]")
     elif isinstance(reference, float):
-        assert isinstance(candidate, (int, float)) and math.isclose(
-            reference, candidate, rel_tol=1e-10, abs_tol=1e-8
-        ), f"{path}: {reference} != {candidate}"
+        assert isinstance(candidate, (int, float)) and reference == candidate, (
+            f"{path}: {reference} != {candidate}"
+        )
     else:
         assert reference == candidate, f"{path}: {reference} != {candidate}"
 
 
 def compare_payloads(reference: dict[str, Any], candidate: dict[str, Any]) -> None:
-    compare_values(analytical_payload(reference), analytical_payload(candidate))
+    left, right = analytical_payload(reference), analytical_payload(candidate)
+    compare_values(left, right)
+    assert source_bytes(left) == source_bytes(right), (
+        "Analytical JSON bytes changed after normalization"
+    )
 
 
 def digest(path: Path) -> str:
@@ -158,6 +164,47 @@ def scan_history(root: Path) -> dict[str, Any]:
     }
 
 
+def compare_figures(reference: Path, candidate: Path) -> dict[str, Any]:
+    """Compare exact plotted data, bind it to CSVs, and fully decode both PNG copies."""
+    sources = {}
+    for root in (reference, candidate):
+        fleet = pd.read_csv(root / "results/seattle_scored.csv", float_precision="round_trip")
+        sensitivity = pd.read_csv(root / "results/sensitivity.csv", float_precision="round_trip")
+        sources[root] = figure_sources(fleet, sensitivity)
+    receipt = {}
+    for name, dimensions in FIGURE_DIMENSIONS.items():
+        sidecar = Path(name).with_suffix(".data.json")
+        left = (reference / "figures" / sidecar).read_bytes()
+        right = (candidate / "figures" / sidecar).read_bytes()
+        assert left == right, f"{name}: figure source data changed"
+        for root in (reference, candidate):
+            assert (root / "figures" / sidecar).read_bytes() == source_bytes(sources[root][name]), (
+                f"{name}: figure source data disagrees with analytical CSVs"
+            )
+            for directory in ("figures", "docs/figures"):
+                path = root / directory / name
+                with Image.open(path) as picture:
+                    assert picture.format == "PNG", f"{name}: expected PNG"
+                    assert picture.size == dimensions, f"{name}: unexpected dimensions"
+                    picture.verify()
+                with Image.open(path) as picture:
+                    picture.load()
+            assert (root / "figures" / name).read_bytes() == (
+                root / "docs/figures" / name
+            ).read_bytes(), f"{name}: documentation image differs from generated image"
+        receipt[name] = {
+            "source_byte_equal": True,
+            "source_matches_csv": True,
+            "source_sha256": hashlib.sha256(left).hexdigest(),
+            "valid_png": True,
+            "dimensions": list(dimensions),
+            "docs_copy_byte_equal": True,
+            "raster_byte_equal": digest(reference / "figures" / name)
+            == digest(candidate / "figures" / name),
+        }
+    return receipt
+
+
 def compare_release(reference: Path, candidate: Path) -> dict[str, Any]:
     compare_payloads(
         json.loads((reference / "results/results.json").read_text()),
@@ -172,17 +219,17 @@ def compare_release(reference: Path, candidate: Path) -> dict[str, Any]:
     ):
         left = pd.read_csv(reference / "results" / name)
         right = pd.read_csv(candidate / "results" / name)
-        pd.testing.assert_frame_equal(left, right, check_exact=False, rtol=1e-10, atol=1e-8)
+        assert (reference / "results" / name).read_bytes() == (
+            candidate / "results" / name
+        ).read_bytes(), f"{name}: analytical CSV bytes changed"
+        pd.testing.assert_frame_equal(left, right, check_exact=True)
         csv_receipt[name] = {
             "rows": len(left),
             "analytical_equal": True,
             "byte_equal": digest(reference / "results" / name)
             == digest(candidate / "results" / name),
         }
-    png_receipt = {}
-    for name in ("ghg_by_department.png", "utilization_proxy.png", "fictional_sensitivity.png"):
-        assert digest(reference / "figures" / name) == digest(candidate / "figures" / name), name
-        png_receipt[name] = "byte-identical"
+    png_receipt = compare_figures(reference, candidate)
     assert (candidate / "RESULTS.md").read_bytes() == (candidate / "docs/results.md").read_bytes()
     assert (reference / "README.md").read_bytes() == (candidate / "README.md").read_bytes()
     normalize = lambda text: re.sub(  # noqa: E731
@@ -195,7 +242,8 @@ def compare_release(reference: Path, candidate: Path) -> dict[str, Any]:
     ), "Results changed outside declared observations"
     return {
         "analytical_json_equal": True,
-        "numeric_tolerance": {"rtol": 1e-10, "atol": 1e-8},
+        "normalized_analytical_json_byte_equal": True,
+        "numeric_tolerance": {"rtol": 0, "atol": 0},
         "csv": csv_receipt,
         "png": png_receipt,
         "readme_byte_equal": True,

@@ -42,3 +42,5 @@ Actual fallback mapping: SEDAN -> Compact; SUV -> Sport utility vehicle: Small; 
 - `catalogue_coverage`: `matched_records` / `eligible_records` is the gate (361/1,568); `estimated_records` is 1,544; `eligible_without_supported_factors` is 24. Scope/fuel eligibility precedes factor support.
 
 Composite terms and constant-group behavior are specified in the [technical report](technical-report.md). NRCan standard test-cycle factors have no measured municipal duty-cycle adjustment. Source vintages differ and cannot establish current fleet or replacement availability.
+
+Figure source records in `figures/*.data.json` contain the exact plotted labels and numerical values: emissions group sums; utilization samples, histogram counts/edges and class quartile thresholds; fictional sensitivity low/high endpoints. Renderers consume these same records. The release check compares their bytes, reconciles them to the analytical CSVs with round-trip float parsing, and fully decodes each PNG at its expected dimensions. Raster bytes can differ across platforms.
