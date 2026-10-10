@@ -2,11 +2,11 @@
 
 Maintainer: **TransitX Labs Inc.** Contact: [info@transitxlabs.ca](mailto:info@transitxlabs.ca).
 
-TransitX Labs Inc. maintains this public-data work sample, its code, documentation and reproduction instructions. This role does not assert municipal client delivery, endorsement or validated operational outcomes. The author's copyright remains credited; company maintenance does not imply a copyright transfer.
+TransitX Labs Inc. maintains this public-data work sample, its code, documentation and reproduction instructions. This role does not assert municipal client delivery, endorsement or validated operational outcomes. TransitX Labs Inc. is the copyright holder and licensor of the code and written prose.
 
 ## Licence
 
-Code, scripts and tests are Apache-2.0 under the included LICENSE, permitting maintenance and modification subject to its terms. Written prose is copyright Amirhossein Daneshpajouh, CC BY 4.0, permitting adaptation with attribution. Provider licences and notices continue to govern derived data, figures and embedded tables; retain ATTRIBUTION.md and input receipts when distributing them. These permissions support the company's maintenance role.
+Code, scripts and tests are Apache-2.0 under the included LICENSE, permitting maintenance and modification subject to its terms. Written prose is copyright TransitX Labs Inc., CC BY 4.0, permitting adaptation with attribution. Provider licences and notices continue to govern derived data, figures and embedded tables; retain ATTRIBUTION.md and input receipts when distributing them. These permissions support the company's maintenance role.
 
 ## Support scope
 

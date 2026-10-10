@@ -2,7 +2,7 @@
 
 A public-data integration demonstration with conservative light-duty screening, factor provenance, simulated mileage, scoped Canadian aggregate accounting, and a fictional cost example. This work sample does not represent client engagements. Operational recommendations and fleet savings are withheld.
 
-Code is Apache-2.0. Written prose is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) by Amirhossein Daneshpajouh. Source-derived CSV/JSON, figures and report data retain provider rights and conditions; see [ATTRIBUTION.md](ATTRIBUTION.md). Raw downloads are excluded from Git, while derivatives retain public source fields.
+Code is Apache-2.0. Written prose is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) by TransitX Labs Inc. Source-derived CSV/JSON, figures and report data retain provider rights and conditions; see [ATTRIBUTION.md](ATTRIBUTION.md). Raw downloads are excluded from Git, while derivatives retain public source fields.
 
 ## Current case study (generated)
 
