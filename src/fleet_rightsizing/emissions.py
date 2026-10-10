@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass, replace
 from pathlib import Path
 
@@ -76,6 +77,21 @@ NRCAN_CLASSES = frozenset(
 )
 
 
+def _sequential_mean(values: Iterable[float]) -> float:
+    """Retain source-order float addition used by the Python 3.11 publication.
+
+    Python 3.12 changed float sum() to compensated summation. Explicit additions
+    preserve the published factor bits across both supported Python versions.
+    Callers supply nonempty groups in the frozen catalogue order.
+    """
+    total = 0.0
+    count = 0
+    for value in values:
+        total += value
+        count += 1
+    return total / count
+
+
 class RatingsIndex:
     """In-memory index built by streaming NRCan CSV once."""
 
@@ -115,8 +131,8 @@ class RatingsIndex:
             for factors in variants:
                 by_class.setdefault(factors.vehicle_class, []).append(factors)
         for vehicle_class, items in by_class.items():
-            combined = float(sum(i.combined_l_per_100km for i in items) / len(items))
-            co2 = float(sum(i.co2_g_per_km for i in items) / len(items))
+            combined = _sequential_mean(i.combined_l_per_100km for i in items)
+            co2 = _sequential_mean(i.co2_g_per_km for i in items)
             self._class_means[vehicle_class] = EmissionFactors(
                 combined_l_per_100km=combined,
                 co2_g_per_km=co2,
@@ -253,8 +269,8 @@ class RatingsIndex:
             if items:
                 return replace(
                     factor,
-                    combined_l_per_100km=sum(f.combined_l_per_100km for f in items) / len(items),
-                    co2_g_per_km=sum(f.co2_g_per_km for f in items) / len(items),
+                    combined_l_per_100km=_sequential_mean(f.combined_l_per_100km for f in items),
+                    co2_g_per_km=_sequential_mean(f.co2_g_per_km for f in items),
                     co2_low=min(f.co2_g_per_km for f in items),
                     co2_high=max(f.co2_g_per_km for f in items),
                 )
@@ -288,8 +304,8 @@ class RatingsIndex:
         return replace(
             compatible[0],
             provenance=provenance,
-            combined_l_per_100km=sum(f.combined_l_per_100km for f in compatible) / len(compatible),
-            co2_g_per_km=sum(f.co2_g_per_km for f in compatible) / len(compatible),
+            combined_l_per_100km=_sequential_mean(f.combined_l_per_100km for f in compatible),
+            co2_g_per_km=_sequential_mean(f.co2_g_per_km for f in compatible),
             co2_low=min(f.co2_g_per_km for f in compatible),
             co2_high=max(f.co2_g_per_km for f in compatible),
         )
