@@ -1,4 +1,4 @@
-"""Round 4 publication regressions, numbered as the independent R3 review."""
+"""Round 5 regression tests."""
 
 import hashlib
 import importlib.util

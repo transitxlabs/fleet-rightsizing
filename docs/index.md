@@ -1,8 +1,8 @@
-# Public-data integration case study
+# Public-data integration demonstration
 
 Which municipal fleet records can support transparent fuel and emissions accounting, and what evidence is still needed before deciding that a vehicle is surplus or replaceable?
 
-TransitX Labs Inc. maintains this public-data integration work sample. It demonstrates typed CSV ingestion, reconciled source counts, conservative inventory screening, traceable factors and reproducible accounting reports. It is not client work or validated municipal decision performance. Fleet savings and operational recommendations are withheld.
+TransitX Labs Inc. maintains this public-data integration demonstration. It demonstrates typed CSV ingestion, reconciled source counts, conservative inventory screening, traceable factors and reproducible accounting reports. It is not client work or validated municipal decision performance. Fleet savings and operational recommendations are withheld.
 
 ## Source-to-output
 
@@ -31,7 +31,7 @@ Federal fuel aggregates -> fiscal-year and scope filter -> CO2e/L accounting
 
 A small reproducible result is **3,012.7 t simulated annual tailpipe CO2**, with a chosen assumption envelope of **1,470.0 to 5,539.4 t**. This is not measured fleet emissions; the envelope has no probability coverage claim. Analysis year is fixed at 2026. NRCan standard test-cycle factors have no measured duty-cycle adjustment; source vintages differ and do not establish current inventory or purchase availability. Variants, payload, seating, mission, upfits and dispatch/reserve requirements remain unresolved.
 
-Read [generated results](results.md), the [current local validation record](validation.md), [technical report](technical-report.md) and [output dictionary](OUTPUT_DICTIONARY.md). The standalone `results/report.html` in the repository embeds its figures and notices: open it locally for a rendered preview. This case study is the GitHub Pages build of `docs/`, intended for https://transitxlabs.github.io/fleet-rightsizing/ when the repository is published and the Pages workflow deploys. No live deployment or remote CI execution is claimed.
+Start with the [rendered demonstration](https://transitxlabs.github.io/fleet-rightsizing/), built from `docs/`. Read [generated results](results.md), the [validation record](validation.md), [technical report](technical-report.md), [output dictionary](OUTPUT_DICTIONARY.md) and [stewardship](stewardship.md).
 
 ## Next evidence
 

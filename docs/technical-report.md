@@ -1,6 +1,6 @@
 # Technical report: public-data integration demonstration
 
-This is a software and accounting work sample, not client work, validated surplus detection, a procurement assessment or evidence of methodological novelty. Fleet savings and operational recommendations are withheld. Current tables, input receipts and charts are generated on the [Results page](results.md) from the same record as JSON and portable HTML.
+This is a software and accounting demonstration, not client work, validated surplus detection, a procurement assessment or evidence of methodological novelty. Fleet savings and operational recommendations are withheld. Current tables, input receipts and charts are generated on the [Results page](results.md) from the same record as JSON and portable HTML.
 
 Seattle supplies inventory, not observed mileage. The light-duty screen requires weight class 1/2 or LIGHT, recognized body class, and no identified specialist duty tokens. It preserves descriptions and weights in the exclusion ledger; a passing screen is not mission equivalence. Known weights and identified duty tokens screened; specialization remains unresolved. SERVICE BODY and CUTAWAY records can pass; source descriptions and explicit scope/upfit status are displayed in both ledgers. Department alone does not resolve mission.
 

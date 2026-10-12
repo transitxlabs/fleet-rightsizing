@@ -1,4 +1,4 @@
-"""Round 5 contracts from the independent round 4 publication review."""
+"""Round 5 regression tests."""
 
 from pathlib import Path
 from unittest.mock import patch

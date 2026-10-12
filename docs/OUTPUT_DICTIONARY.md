@@ -11,7 +11,7 @@ All operational recommendations are withheld. Units and interpretation:
 | `federal_factor_check` | Latest fiscal-year beginning, latest/compatible/excluded rows, gasoline/diesel litres, kt CO2e, kg CO2e/L and illustrative CO2 comparison |
 | `seattle_scored.csv` | Public inventory identity, source description/weight/body, powertrain, scope and exclusion reason; simulated km, class quartile, factors, provenance, compatible variant/class extrema, annual kg/L/CAD |
 | `match_provenance` | `exact`, `year_adjacent`, `fuzzy` are catalogue text matches with unresolved variants; `class_mean` is a proxy; `generic` and `not_applicable` are unsupported |
-| `scenario_ledger.csv` | Illustrative catalogue screen for top 10% of composite scores, not a plan; BEV model/year/range/energy; engineering review pending; `bev_feasible` false, fleet `tco_savings_10yr` and `scenario_ghg_reduction_factor` zero; `hypothetical_npv_delta_cad` uses uniform base capital |
+| `scenario_ledger.csv` | Illustrative catalogue screen for top 10% of composite scores, not a plan; `illustrative_screen_flag`, BEV range/energy; `engineering_status` not reviewed; `bev_feasible` false, fleet `tco_savings_10yr` and `scenario_ghg_reduction_factor` zero; `hypothetical_npv_delta_cad` uses uniform base capital |
 | `sensitivity.csv` | Two fictional equivalent base vehicles; one-at-a-time changes in six economic parameters; hypothetical NPV totals/delta in CAD and invariant 100% tailpipe reduction |
 | `replacement_plan.csv` | Withheld and removed during regeneration |
 | `report.html` | Standalone case-study preview with embedded figures, input receipts and provider notices |

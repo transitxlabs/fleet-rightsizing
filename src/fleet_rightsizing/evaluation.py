@@ -167,7 +167,7 @@ def evaluate(
         scenario_tco_savings_cad=tco_savings,
         scenario_eligible_count=int(replaced.shape[0]),
         scenario_infeasible_count=int(
-            scenario[scenario["replace_candidate"] & ~scenario["bev_feasible"]].shape[0]
+            scenario[scenario["illustrative_screen_flag"] & ~scenario["bev_feasible"]].shape[0]
         ),
         ghg_bootstrap_low=ghg_low,
         ghg_bootstrap_high=ghg_high,

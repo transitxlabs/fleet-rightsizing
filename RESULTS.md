@@ -1,6 +1,6 @@
 # Results: public-data integration demonstration
 
-Generated from the same results record as `results/results.json` and HTML. This work sample is not client work.
+Generated from the same results record as `results/results.json` and HTML. This demonstration is not client work.
 
 Analysis year: 2026. Fixed age reference year, not a claim of current inventory or catalogue availability.
 
@@ -86,16 +86,16 @@ Hashes identify observed publication inputs; retrieval timestamps for inherited 
 
 | Dataset | Rows | Bytes | SHA-256 | Observed UTC |
 | --- | ---: | ---: | --- | --- |
-| seattle_fleet | 4255 | 493225 | aa210650a96b36c2ca2cb905742a640244ce4078e37d4194c34ddc4c26dc5b53 | 2026-10-01T14:45:31.943768+00:00 |
-| nyc_efficiency | 106 | 13489 | 1262a9b3d646ffd7ef88e69b7afeb069bd2784caf0339390215a0853015df1ef | 2026-10-01T14:45:31.943768+00:00 |
-| laval_fleet | 1318 | 167160 | b22b7cc0cb188d3a778416e365ac9969ddbbef9bfdcd01e5a93725d95af17d6c | 2026-10-01T14:45:31.943768+00:00 |
-| nrcan_ratings | 10060 | 827253 | adb157dccde5d954d34b8a068f9dd604ad28b0050d2bb3ba17d26678761d2cb7 | 2026-10-01T14:45:31.943768+00:00 |
-| nrcan_bev | 1250 | 138739 | d37f52ee8049e93b37f66ac233b037e6abe0218ef3635ef6cbddf8fb8c675f51 | 2026-10-01T14:45:31.943768+00:00 |
-| federal_fleet_fuel | 1666 | 205795 | ab20d5905523fb18ffcdc29e4af747267b46040bf8eab82c89429f4877ef5fa8 | 2026-10-01T14:45:31.943768+00:00 |
+| seattle_fleet | 4255 | 493225 | aa210650a96b36c2ca2cb905742a640244ce4078e37d4194c34ddc4c26dc5b53 | 2026-10-12T20:31:37.395094+00:00 |
+| nyc_efficiency | 106 | 13489 | 1262a9b3d646ffd7ef88e69b7afeb069bd2784caf0339390215a0853015df1ef | 2026-10-12T20:31:37.395094+00:00 |
+| laval_fleet | 1318 | 167160 | b22b7cc0cb188d3a778416e365ac9969ddbbef9bfdcd01e5a93725d95af17d6c | 2026-10-12T20:31:37.395094+00:00 |
+| nrcan_ratings | 10060 | 827253 | adb157dccde5d954d34b8a068f9dd604ad28b0050d2bb3ba17d26678761d2cb7 | 2026-10-12T20:31:37.395094+00:00 |
+| nrcan_bev | 1250 | 138739 | d37f52ee8049e93b37f66ac233b037e6abe0218ef3635ef6cbddf8fb8c675f51 | 2026-10-12T20:31:37.395094+00:00 |
+| federal_fleet_fuel | 1666 | 205795 | ab20d5905523fb18ffcdc29e4af747267b46040bf8eab82c89429f4877ef5fa8 | 2026-10-12T20:31:37.395094+00:00 |
 
 ## Performance receipt
 
-OS/architecture: macOS-27.0.1-arm64-arm-64bit; Python: 3.11.15. Process high-water RSS: 166.8 MiB. Instrumented stage sum: 2.62 s. Through CSV/HTML output: 2.79 s. Imports, final JSON/Markdown metadata serialization and interpreter startup are excluded. Stage RSS observations are process high-water marks, not isolated usage.
+OS/architecture: macOS-27.0.1-arm64-arm-64bit; Python: 3.11.15. Process high-water RSS: 193.6 MiB. Instrumented stage sum: 10.09 s. Through CSV/HTML output: 10.22 s. Imports, final JSON/Markdown metadata serialization and interpreter startup are excluded. Stage RSS observations are process high-water marks, not isolated usage.
 
 ## Charts
 

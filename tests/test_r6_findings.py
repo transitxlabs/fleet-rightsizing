@@ -18,8 +18,8 @@ def test_finding_9_rendered_pages_route() -> None:
     url = "https://transitxlabs.github.io/fleet-rightsizing/"
     readme = (ROOT / "README.md").read_text()
     assert f"]({url})" in readme
-    assert "GitHub Pages build of `docs/`" in readme
-    assert "when the repository is published" in readme
+    assert "rendered demonstration" in readme
+    assert "built from `docs/`" in readme
     assert "Fleet savings and operational recommendations are withheld" in readme
     config = yaml.safe_load((ROOT / "mkdocs.yml").read_text())
     assert config["site_url"] == url

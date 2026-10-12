@@ -191,7 +191,7 @@ def test_finding3_evaluate_uses_feasible_only() -> None:
     nyc_scored = nyc.assign(underutilized=[True])
     scenario = pd.DataFrame(
         {
-            "replace_candidate": [True],
+            "illustrative_screen_flag": [True],
             "bev_feasible": [True],
             "annual_co2_kg": [1000.0],
             "scenario_ghg_reduction_factor": [0.7],

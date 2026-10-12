@@ -602,37 +602,37 @@
       "sha256": "aa210650a96b36c2ca2cb905742a640244ce4078e37d4194c34ddc4c26dc5b53",
       "bytes": 493225,
       "raw_rows": 4255,
-      "observed_at_utc": "2026-10-01T14:45:31.943768+00:00"
+      "observed_at_utc": "2026-10-12T20:31:37.395094+00:00"
     },
     "nyc_efficiency": {
       "sha256": "1262a9b3d646ffd7ef88e69b7afeb069bd2784caf0339390215a0853015df1ef",
       "bytes": 13489,
       "raw_rows": 106,
-      "observed_at_utc": "2026-10-01T14:45:31.943768+00:00"
+      "observed_at_utc": "2026-10-12T20:31:37.395094+00:00"
     },
     "laval_fleet": {
       "sha256": "b22b7cc0cb188d3a778416e365ac9969ddbbef9bfdcd01e5a93725d95af17d6c",
       "bytes": 167160,
       "raw_rows": 1318,
-      "observed_at_utc": "2026-10-01T14:45:31.943768+00:00"
+      "observed_at_utc": "2026-10-12T20:31:37.395094+00:00"
     },
     "nrcan_ratings": {
       "sha256": "adb157dccde5d954d34b8a068f9dd604ad28b0050d2bb3ba17d26678761d2cb7",
       "bytes": 827253,
       "raw_rows": 10060,
-      "observed_at_utc": "2026-10-01T14:45:31.943768+00:00"
+      "observed_at_utc": "2026-10-12T20:31:37.395094+00:00"
     },
     "nrcan_bev": {
       "sha256": "d37f52ee8049e93b37f66ac233b037e6abe0218ef3635ef6cbddf8fb8c675f51",
       "bytes": 138739,
       "raw_rows": 1250,
-      "observed_at_utc": "2026-10-01T14:45:31.943768+00:00"
+      "observed_at_utc": "2026-10-12T20:31:37.395094+00:00"
     },
     "federal_fleet_fuel": {
       "sha256": "ab20d5905523fb18ffcdc29e4af747267b46040bf8eab82c89429f4877ef5fa8",
       "bytes": 205795,
       "raw_rows": 1666,
-      "observed_at_utc": "2026-10-01T14:45:31.943768+00:00"
+      "observed_at_utc": "2026-10-12T20:31:37.395094+00:00"
     }
   },
   "recommendations_status": "withheld",
@@ -751,24 +751,24 @@
     "scope": "Scope 1 on-road gasoline/diesel only; source CO2e versus illustrative CO2 factors (2.3/2.7 kg/L); rounding, blends and non-CO2 gases prevent validation"
   },
   "timings_seconds": {
-    "download_s": 0.01713779199781129,
-    "load_s": 0.11644916699879104,
-    "baseline_s": 2.0367697910041898,
-    "evaluate_s": 0.16658908400131622,
-    "figures_s": 0.28515087500272784,
-    "total_instrumented_s": 2.622096709004836,
-    "before_output_s": 2.6222682500010706,
-    "through_output_s": 2.7923322499991627
+    "download_s": 7.557416916999955,
+    "load_s": 0.17468783300000723,
+    "baseline_s": 1.9399677920000613,
+    "evaluate_s": 0.1579906669999218,
+    "figures_s": 0.2558297909999965,
+    "total_instrumented_s": 10.085892999999942,
+    "before_output_s": 10.086063792000004,
+    "through_output_s": 10.217511374999958
   },
   "stage_memory_mb": {
-    "download_mb": 125.578125,
-    "load_mb": 138.765625,
-    "baseline_mb": 141.84375,
-    "evaluate_mb": 143.5625,
-    "figures_mb": 162.1875
+    "download_mb": 144.796875,
+    "load_mb": 162.71875,
+    "baseline_mb": 170.171875,
+    "evaluate_mb": 173.078125,
+    "figures_mb": 190.21875
   },
   "memory_scope": "process high-water RSS observed after each stage; not isolated usage",
-  "peak_memory_mb": 166.75,
+  "peak_memory_mb": 193.640625,
   "environment": {
     "python_version": "3.11.15",
     "platform": "macOS-27.0.1-arm64-arm-64bit"

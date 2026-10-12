@@ -1,6 +1,6 @@
 # fleet-rightsizing
 
-A public-data integration demonstration with conservative light-duty screening, factor provenance, simulated mileage, scoped Canadian aggregate accounting, and a fictional cost example. This work sample does not represent client engagements. Operational recommendations and fleet savings are withheld.
+A public-data integration demonstration with conservative light-duty screening, factor provenance, simulated mileage, scoped Canadian aggregate accounting, and a fictional cost example. This demonstration does not represent client engagements. Operational recommendations and fleet savings are withheld.
 
 Code is Apache-2.0. Written prose is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) by TransitX Labs Inc. Source-derived CSV/JSON, figures and report data retain provider rights and conditions; see [ATTRIBUTION.md](ATTRIBUTION.md). Raw downloads are excluded from Git, while derivatives retain public source fields.
 
@@ -10,7 +10,7 @@ Code is Apache-2.0. Written prose is [CC BY 4.0](https://creativecommons.org/lic
 Simulated light-duty cohort: 1,544 of 4,253 loaded Seattle records; 3,012.7 t tailpipe CO2 under proxy assumptions. NRCan catalogue matches: 361/1,568 (23.0%). Stop rules passed: False. Fleet savings and operational recommendations are withheld.
 <!-- CASE_STUDY_END -->
 
-Start with the [rendered municipal case study](https://transitxlabs.github.io/fleet-rightsizing/), the GitHub Pages build of `docs/`. This intended address becomes available when the repository is published and its Pages workflow deploys; no live page is claimed yet. Repository reading starts with the [case-study source](docs/index.md), [local validation record](docs/validation.md) and [stewardship](docs/stewardship.md) (maintainer: TransitX Labs Inc.; contact info@transitxlabs.ca). Read the [generated case study](docs/results.md) with charts, exclusions, factor contributions, input hashes and failed gates. The portable [HTML report](results/report.html) embeds its figures and licence notices. [Technical report](docs/technical-report.md), [output dictionary](docs/OUTPUT_DICTIONARY.md) and [dated amendment](docs/AMENDMENT_2026-10-01.md) explain scope and assumptions.
+Start with the [rendered demonstration](https://transitxlabs.github.io/fleet-rightsizing/), built from `docs/`. Read [generated results](docs/results.md), the [validation record](docs/validation.md), [technical report](docs/technical-report.md), [output dictionary](docs/OUTPUT_DICTIONARY.md) and [stewardship](docs/stewardship.md) (maintainer: TransitX Labs Inc.; contact info@transitxlabs.ca).
 
 ## Quick start
 
@@ -21,7 +21,7 @@ pip install -c requirements-release.txt ".[dev]"
 python scripts/run_pipeline.py
 ```
 
-One command downloads and checks publication input hashes, generates JSON/CSV/HTML, charts, RESULTS.md, docs/results.md and this case summary. Inherited-cache retrieval dates are unknown; observed hashes/dates are recorded. Public snapshots may become unavailable. A changed endpoint fails the release hash check; intentional updates require replacing the input receipt and reviewing the new outputs. An explicitly supplied cache is pinned when its parent contains `publication-inputs.json`.
+One command downloads and checks publication input hashes, generates JSON/CSV/HTML, charts, RESULTS.md, docs/results.md and this case summary. Download dates for older cached inputs are unknown. Hashes and observation times are recorded. Public snapshots may become unavailable. A changed endpoint fails the release hash check; intentional updates require replacing the input receipt and reviewing the new outputs. An explicitly supplied cache is pinned when its parent contains `publication-inputs.json`.
 
 To compare a regenerated checkout against a saved release tree, run `python scripts/publication_checks.py compare --reference SAVED_TREE --candidate .`. Analytical JSON must match byte for byte after canonical serialization and excluding only declared run observations; all four analytical CSVs, generated table text and README must be byte-identical (table observations are normalized). Each figure has a canonical `.data.json` record of the values consumed by its renderer. These records must be byte-identical and agree exactly with the analytical CSVs. Both root and documentation PNGs must fully decode at the expected dimensions: 1500 x 900 for emissions and sensitivity, 1200 x 750 for utilization. Documentation images must match the root images within each run. PNG bytes can vary across platforms with font and rasterizer differences; cross-platform raster byte equality is not guaranteed. Run observations (timestamps, timings, RSS, environment) vary. CI now includes pinned regeneration and comparison on both configured Python versions; no remote execution is claimed.
 

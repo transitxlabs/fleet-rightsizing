@@ -2,7 +2,7 @@
 
 Date: 2026-10-01. Novelty: **UNVERIFIED**. No methodological or industry-wide gap claim is supported. Current dataset sizes, row counts, licences and observations are in the generated Results page and attribution record; historical hand estimates are removed.
 
-The following scope descriptions use primary project pages reviewed in the independent R2 audit dated 2026-10-01. No immutable version/commit was recorded in that audit; these are bounded page-level descriptions, not feature-complete or version-pinned comparisons. No commercial deliverable was examined, so no general reproducibility comparison is made.
+These descriptions use the primary project pages as read on 2026-10-01. No version or commit was recorded.
 
 | Primary scope evidence | Described task | Relation to this demonstration |
 | --- | --- | --- |

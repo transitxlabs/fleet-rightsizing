@@ -98,21 +98,15 @@ def scenario_comparison(
     work["composite_score"] = composite_score(work)
     work = work.sort_values("composite_score", ascending=False)
     n_replace = max(1, int(len(work) * replacement_fraction))
-    work["replace_candidate"] = False
-    work.loc[work.index[:n_replace], "replace_candidate"] = True
+    work["illustrative_screen_flag"] = False
+    work.loc[work.index[:n_replace], "illustrative_screen_flag"] = True
     savings: list[float] = []
-    bev_labels: list[str] = []
-    bev_models: list[str] = []
-    bev_years: list[int | None] = []
     bev_ranges: list[float | None] = []
     bev_kwh: list[float | None] = []
     feasible: list[bool] = []
     for _, row in work.iterrows():
-        if not row["replace_candidate"]:
+        if not row["illustrative_screen_flag"]:
             savings.append(0.0)
-            bev_labels.append("")
-            bev_models.append("")
-            bev_years.append(None)
             bev_ranges.append(None)
             bev_kwh.append(None)
             feasible.append(False)
@@ -121,9 +115,6 @@ def scenario_comparison(
         bev = ratings.best_bev(vehicle_class, min_range=MIN_BEV_RANGE_KM)
         if bev is None:
             savings.append(0.0)
-            bev_labels.append("")
-            bev_models.append("")
-            bev_years.append(None)
             bev_ranges.append(None)
             bev_kwh.append(None)
             feasible.append(False)
@@ -144,20 +135,14 @@ def scenario_comparison(
             charger_cost=CHARGER_AMORTIZATION,
         )
         savings.append(ice.ten_year_npv - bev_cost.ten_year_npv)
-        bev_labels.append(bev.make)
-        bev_models.append(bev.model)
-        bev_years.append(bev.model_year)
         bev_ranges.append(bev.range_km)
         bev_kwh.append(bev.combined_kwh_per_100km)
         feasible.append(True)
     work["tco_savings_10yr"] = savings
-    work["bev_make"] = bev_labels
-    work["bev_model"] = bev_models
-    work["bev_model_year"] = bev_years
     work["bev_range_km"] = bev_ranges
     work["bev_kwh_per_100km"] = bev_kwh
     work["illustrative_option"] = feasible
-    work["engineering_status"] = "awaiting engineering review"
+    work["engineering_status"] = "not reviewed; not a recommendation"
     work["scenario_value_status"] = "withheld placeholders; not evaluated fleet outcomes"
     work["hypothetical_npv_delta_cad"] = savings
     work["bev_feasible"] = False

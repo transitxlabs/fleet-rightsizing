@@ -90,7 +90,7 @@ def test_tco_and_plan() -> None:
         FIXTURES / "nrcan_bev_sample.csv",
     )
     scenario = scenario_comparison(fleet, ratings, replacement_fraction=0.5)
-    assert scenario["replace_candidate"].any()
+    assert scenario["illustrative_screen_flag"].any()
     plan = build_replacement_plan(fleet, top_n=2)
     assert len(plan) == 2
     assert age_only_flags(fleet).any()
@@ -154,7 +154,7 @@ def test_perfect_score_edge_cases() -> None:
     )
     scenario = pd.DataFrame(
         {
-            "replace_candidate": [True],
+            "illustrative_screen_flag": [True],
             "bev_feasible": [True],
             "annual_co2_kg": [1000.0],
             "scenario_ghg_reduction_factor": [0.7],

@@ -130,7 +130,7 @@ def write_results_markdown(
         "# Results: public-data integration demonstration",
         "",
         "Generated from the same results record as `results/results.json` and HTML. "
-        "This work sample is not client work.",
+        "This demonstration is not client work.",
         "",
         f"Analysis year: {payload.get('analysis_year', 'unavailable')}. Fixed age reference year, "
         "not a claim of current inventory or catalogue availability.",
